@@ -1,0 +1,11 @@
+# runtime data
+game.db
+game.db-wal
+game.db-shm
+
+# python
+__pycache__/
+*.pyc
+
+# os
+.DS_Store
