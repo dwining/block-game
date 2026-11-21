@@ -913,7 +913,7 @@
   }
   function saveProgress(){
     if(!nickname) return;
-    apiPost('/api/progress', { nickname:nickname, level:currentLevel, score:score })
+    apiPost('api/progress', { nickname:nickname, level:currentLevel, score:score })
       .catch(function(){});
   }
   function escapeHtml(s){
@@ -922,7 +922,7 @@
     });
   }
   function loadLeaderboard(){
-    apiGet('/api/leaderboard').then(function(res){
+    apiGet('api/leaderboard').then(function(res){
       var box=document.getElementById('lbList');
       if(!res || !res.rows || !res.rows.length){
         box.innerHTML='<div class="lb-empty">Belum ada pemain. Jadilah yang pertama!</div>';
@@ -951,7 +951,7 @@
       return;
     }
     err.textContent='Memeriksa…';
-    apiPost('/api/register', { nickname:nick }).then(function(res){
+    apiPost('api/register', { nickname:nick }).then(function(res){
       if(res && res.ok){
         startSession(res.nickname);
       } else if(res && res.error){
@@ -1027,7 +1027,7 @@
     var last=null;
     try{ last=localStorage.getItem('bb_nick'); }catch(e){}
     if(last){
-      apiGet('/api/check?nickname='+encodeURIComponent(last)).then(function(res){
+      apiGet('api/check?nickname='+encodeURIComponent(last)).then(function(res){
         if(res && res.exists){ startSession(last); }
         else { showStart(); }
       }).catch(function(){ showStart(); });
